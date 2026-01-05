@@ -159,7 +159,67 @@ body::before {
 
 .hero-section {
     text-align: center;
-    padding: 80px 0 120px;
+    padding: 40px 0 120px;
+}
+
+.card-issue-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.issue-card-button {
+    background: linear-gradient(135deg, #1E5BC6 0%, #2563EB 100%);
+    color: white;
+    border: none;
+    padding: 20px 80px;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(30, 91, 198, 0.4);
+    min-width: 400px;
+}
+
+.issue-card-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(30, 91, 198, 0.6);
+}
+
+.verification-badge {
+    margin: 20px 0;
+}
+
+.check-icon svg {
+    filter: drop-shadow(0 4px 12px rgba(30, 144, 255, 0.4));
+}
+
+.verify-account-button {
+    background: linear-gradient(135deg, #1E5BC6 0%, #2563EB 100%);
+    color: white;
+    border: none;
+    padding: 18px 60px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(30, 91, 198, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 350px;
+    justify-content: center;
+}
+
+.verify-account-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(30, 91, 198, 0.6);
 }
 
 .hero-title {
@@ -167,63 +227,176 @@ body::before {
     font-size: 96px;
     font-weight: 900;
     color: var(--text-primary);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     line-height: 1.1;
     letter-spacing: -1px;
 }
 
 .hero-subtitle {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 60px;
     line-height: 1.4;
 }
 
-.hero-description {
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    max-width: 700px;
-    margin: 0 auto 64px;
+.currency-exchange-section {
+    background: rgba(26, 35, 50, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 60px;
+    backdrop-filter: blur(10px);
 }
 
-.hero-download {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.download-title {
+.exchange-text {
     font-size: 20px;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 0;
+    line-height: 1.8;
+    margin-bottom: 30px;
 }
 
-.download-button {
-    background: var(--button-primary);
-    color: white;
+.exchange-button {
+    background: linear-gradient(135deg, #93C5FD 0%, #BFDBFE 100%);
+    color: #1E3A8A;
     border: none;
-    padding: 16px 64px;
+    padding: 16px 50px;
     font-size: 18px;
     font-weight: 700;
     font-family: 'Cairo', sans-serif;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(91, 132, 212, 0.3);
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    box-shadow: 0 4px 16px rgba(147, 197, 253, 0.3);
 }
 
-.download-button:hover {
-    background: var(--button-hover);
+.exchange-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(91, 132, 212, 0.4);
+    box-shadow: 0 6px 24px rgba(147, 197, 253, 0.5);
+}
+
+.card-display-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.sham-cash-card {
+    width: 400px;
+    height: 250px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: all 0.3s ease;
+}
+
+.sham-cash-card:hover {
+    transform: perspective(1000px) rotateY(0deg) translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.card-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFC837 100%);
+    opacity: 0.9;
+}
+
+.card-content {
+    position: relative;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.card-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-chip {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+}
+
+.card-number {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.card-date {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card-holder {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.card-visa {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    font-style: italic;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.contactless {
+    position: absolute;
+    top: 120px;
+    right: 30px;
+}
+
+.card-description {
+    text-align: right;
+}
+
+.card-description h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.card-description p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-secondary);
 }
 
 .section-about,
@@ -422,6 +595,18 @@ body::before {
         padding: 100px 24px 60px;
     }
     
+    .issue-card-button {
+        font-size: 18px;
+        padding: 16px 40px;
+        min-width: 300px;
+    }
+    
+    .verify-account-button {
+        font-size: 16px;
+        padding: 14px 30px;
+        min-width: 280px;
+    }
+    
     .hero-title {
         font-size: 56px;
     }
@@ -430,7 +615,35 @@ body::before {
         font-size: 24px;
     }
     
-    .hero-description {
+    .exchange-text {
+        font-size: 16px;
+    }
+    
+    .exchange-button {
+        font-size: 15px;
+        padding: 14px 30px;
+    }
+    
+    .card-display-section {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .sham-cash-card {
+        width: 320px;
+        height: 200px;
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    
+    .card-number {
+        font-size: 18px;
+    }
+    
+    .card-description h3 {
+        font-size: 22px;
+    }
+    
+    .card-description p {
         font-size: 16px;
     }
     
@@ -461,6 +674,23 @@ body::before {
         display: none;
     }
     
+    .issue-card-button {
+        font-size: 16px;
+        padding: 14px 30px;
+        min-width: 280px;
+    }
+    
+    .verify-account-button {
+        font-size: 14px;
+        padding: 12px 24px;
+        min-width: 250px;
+    }
+    
+    .check-icon svg {
+        width: 60px;
+        height: 60px;
+    }
+    
     .hero-title {
         font-size: 40px;
     }
@@ -469,17 +699,51 @@ body::before {
         font-size: 20px;
     }
     
-    .hero-description {
+    .currency-exchange-section {
+        padding: 30px 20px;
+    }
+    
+    .exchange-text {
         font-size: 14px;
     }
     
-    .download-title {
+    .exchange-button {
+        font-size: 14px;
+        padding: 12px 24px;
+    }
+    
+    .sham-cash-card {
+        width: 280px;
+        height: 175px;
+    }
+    
+    .card-content {
+        padding: 20px;
+    }
+    
+    .card-logo-text {
+        font-size: 18px;
+    }
+    
+    .card-chip svg {
+        width: 40px;
+        height: 32px;
+    }
+    
+    .card-number {
         font-size: 16px;
     }
     
-    .download-button {
-        font-size: 16px;
-        padding: 14px 48px;
+    .card-visa {
+        font-size: 24px;
+    }
+    
+    .card-description h3 {
+        font-size: 20px;
+    }
+    
+    .card-description p {
+        font-size: 14px;
     }
     
     .section-title {
