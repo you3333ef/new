@@ -11,210 +11,239 @@
 </head>
 <body>
     <div class="page-wrapper">
-        <!-- Logo 3D -->
-        <div class="logo-3d">
-            <div class="logo-3d-shape"></div>
-        </div>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <svg class="logo-svg" width="48" height="56" viewBox="0 0 68 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50.2993 55.3317L38.347 48.0665C37.0678 47.289 37.0649 45.4334 38.3415 44.6518L47.8252 38.8454C49.1182 38.0538 49.0946 36.1676 47.7823 35.4085L20.1623 19.4322C19.5443 19.0747 19.1637 18.4149 19.1637 17.7009L19.1637 3.42207C19.1637 1.89188 20.812 0.928516 22.1452 1.6795L66.9816 26.9354C67.6107 27.2898 68 27.9559 68 28.678L68 45.2056C68 45.9219 67.6169 46.5835 66.9957 46.9401L52.3339 55.3571C51.7017 55.72 50.9222 55.7103 50.2993 55.3317Z" fill="url(#paint0_linear)"/>
+                    <path d="M17.7007 23.4865L29.653 30.7516C30.9322 31.5291 30.9351 33.3847 29.6585 34.1664L20.1748 39.9727C18.8818 40.7643 18.9054 42.6505 20.2177 43.4096L47.8377 59.3859C48.4557 59.7434 48.8363 60.4032 48.8363 61.1172V75.396C48.8363 76.9262 47.188 77.8896 45.8548 77.1386L1.01843 51.8827C0.389264 51.5283 0 50.8623 0 50.1401L0 33.6125C0 32.8962 0.38306 32.2346 1.00426 31.878L15.6661 23.461C16.2983 23.0981 17.0778 23.1078 17.7007 23.4865Z" fill="url(#paint1_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="68.3091" y1="53.7818" x2="29.9818" y2="-23.4909" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#81A0F2"/>
+                            <stop offset="0.270124" stop-color="#2F4095" stop-opacity="0.57"/>
+                            <stop offset="1" stop-color="#81A0F2"/>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear" x1="-0.30909" y1="25.0363" x2="38.0182" y2="102.309" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#81F2BD"/>
+                            <stop offset="0.270124" stop-color="#19796D" stop-opacity="0.57"/>
+                            <stop offset="1" stop-color="#81F2CA"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <div class="nav-center">
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">تواصل معنا</a></li>
+                    <li><a href="#" class="nav-link">توثيق الحساب</a></li>
+                    <li><a href="#" class="nav-link">الأسئلة الشائعة</a></li>
+                    <li><a href="#" class="nav-link active">الصفحة الرئيسية</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-right">
+                <button class="user-icon-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                        <path d="M6 21C6 17.6863 8.68629 15 12 15C15.3137 15 18 17.6863 18 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
 
         <!-- Main Content -->
-        <div class="container">
-            <!-- Action Buttons Section -->
-            <div class="hero-buttons">
-                <button class="action-btn primary-btn" id="issueCardBtn">
-                    <div class="btn-content">
-                        <span class="btn-text">حمّل التطبيق واستمتع بخدماتنا</span>
-                    </div>
-                </button>
-
-                <button class="action-btn secondary-btn" id="verifyAccountBtn">
-                    <div class="btn-content">
-                        <span class="btn-text">توثيق الحساب</span>
-                    </div>
-                </button>
-            </div>
-
-            <!-- Brand Section -->
-            <div class="brand-section">
-                <h1 class="brand-logo">شام كاش</h1>
-            </div>
-
-            <!-- Description Section -->
-            <div class="description-section">
-                <h2 class="main-title">حلول مالية مبتكرة من أجل مستقبل رقمي واعد</h2>
-                <p class="main-description">
-                    نظام موثوق و آمن يتيح للمستخدمين إجراء المعاملات المالية بسهولة ومرونة .<br>
-                    هدفنا هو تمكين الأفراد من إدارة شؤونهم المالية بكفاءة وسرية.
+        <div class="main-container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h1 class="hero-title">شام كاش</h1>
+                <h2 class="hero-subtitle">حلول مالية مبتكرة من أجل مستقبل رقمي واعد</h2>
+                <p class="hero-description">
+                    نظام موثوق و آمن يتيح للمستخدمين إجراء المعاملات المالية بسهولة ومرونة . هدفنا هو تمكين الأفراد من إدارة شؤونهم المالية بكفاءة وسرية.
                 </p>
-                <button class="feature-btn" id="activateFeatureBtn">
-                    تنزيل
-                </button>
-            </div>
+                
+                <div class="hero-download">
+                    <h3 class="download-title">حمّل التطبيق واستمتع بخدماتنا</h3>
+                    <button class="download-button">
+                        <svg width="20" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" fill="currentColor"/>
+                        </svg>
+                        <span>تنزيل</span>
+                    </button>
+                </div>
+            </section>
 
-            <!-- Info Section -->
-            <div class="info-section">
-                <h2 class="info-section-title">حول</h2>
-                <p class="info-section-description">
+            <!-- About Section -->
+            <section class="section-about">
+                <h2 class="section-title">حول</h2>
+                <p class="section-description">
                     تطبيقنا هو الحل الأمثل لإدارة معاملاتك المالية بسهولة وأمان يتيح لك إرسال واستلام الأموال بسرعة وسلاسة، مع واجهة استخدام بسيطة وتجربة مريحة. نسعى من خلاله إلى تقديم خدمات مالية مبتكرة تضمن الشفافية والموثوقية، مما يتيح لك التحكم الكامل بأموالك في أي وقت ومن أي مكان.
                 </p>
-
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                
+                <div class="cards-grid-3">
+                    <div class="info-card">
+                        <div class="card-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="currentColor"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card-title">الأمان</h3>
-                        <p class="feature-card-description">تطبيقنا مصمم بأعلى معايير الأمان لحماية بياناتك ومعاملاتك المالية، مما يضمن لك تجربة موثوقة وآمنة في كل خطوة.</p>
+                        <h3 class="card-title">الأمان</h3>
+                        <p class="card-description">تطبيقنا مصمم بأعلى معايير الأمان لحماية بياناتك ومعاملاتك المالية، مما يضمن لك تجربة موثوقة وآمنة في كل خطوة.</p>
                     </div>
 
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                    <div class="info-card">
+                        <div class="card-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                                <path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z" fill="currentColor"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card-title">الدعم</h3>
-                        <p class="feature-card-description">فريق الدعم الخاص بنا متواجد على مدار الساعة للرد على استفساراتك وحل أي مشاكل قد تواجهها، لضمان تجربة استخدام سلسة وخالية من العقبات.</p>
+                        <h3 class="card-title">الدعم</h3>
+                        <p class="card-description">فريق الدعم الخاص بنا متواجد على مدار الساعة للرد على استفساراتك وحل أي مشاكل قد تواجهها، لضمان تجربة استخدام سلسة وخالية من العقبات.</p>
                     </div>
 
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                    <div class="info-card">
+                        <div class="card-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                                <path d="M7 2v11h3v9l7-12h-4l4-8z" fill="currentColor"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card-title">السرعة</h3>
-                        <p class="feature-card-description">تطبيقنا يتميز بالسرعة العالية لتنفيذ العمليات، مما يضمن تجربة فورية وسلسة تلبي احتياجاتك في أي وقت.</p>
+                        <h3 class="card-title">السرعة</h3>
+                        <p class="card-description">تطبيقنا يتميز بالسرعة العالية لتنفيذ العمليات، مما يضمن تجربة فورية وسلسة تلبي احتياجاتك في أي وقت.</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Advantages Section -->
-            <div class="info-section">
-                <h2 class="info-section-title">المزايا</h2>
-                <p class="info-section-description">
+            <!-- Features Section -->
+            <section class="section-features">
+                <h2 class="section-title">المزايا</h2>
+                <p class="section-description">
                     يقدم تطبيقنا مجموعة من المزايا المصممة لتلبية احتياجاتك بكل احترافية، منها السرعة في تنفيذ العمليات، السهولة في الاستخدام، أعلى مستويات الأمان، وخدمات بدون رسوم خفية. هدفنا هو توفير تجربة مالية مريحة وشفافة تلائم أسلوب حياتك اليومي.
                 </p>
-
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                
+                <div class="cards-grid-3">
+                    <div class="info-card">
+                        <div class="card-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/>
+                                <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z" fill="currentColor"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card-title">الخدمات</h3>
-                        <p class="feature-card-description">نوفر مجموعة من الخدمات المتنوعة التي تلبي احتياجاتك اليومية وتوفر عليك الوقت والجهد</p>
+                        <h3 class="card-title">الخدمات</h3>
+                        <p class="card-description">نوفر مجموعة من الخدمات المتنوعة التي تلبي احتياجاتك اليومية وتوفر عليك الوقت والجهد</p>
                     </div>
 
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                    <div class="info-card">
+                        <div class="card-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                                <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" fill="currentColor"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card-title">سهولة الاستخدام</h3>
-                        <p class="feature-card-description">واجهة تطبيق بسيطة ومباشرة تسهل عليك إجراء العمليات دون تعقيد</p>
+                        <h3 class="card-title">سهولة التحويل بين المستخدمين</h3>
+                        <p class="card-description">أرسل واستقبل الأموال بسهولة وسلاسة بين مستخدمي التطبيق</p>
                     </div>
 
-                    <div class="feature-card">
-                        <div class="feature-icon">
+                    <div class="info-card">
+                        <div class="card-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                                <path d="M7 2v11h3v9l7-12h-4l4-8z" fill="currentColor"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card-title">أمان الأموال</h3>
-                        <p class="feature-card-description">نضمن حماية كاملة لأموالك ومعاملاتك باستخدام أحدث تقنيات الأمان</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-card-title">سرعة العمليات</h3>
-                        <p class="feature-card-description">نفّذ معاملاتك المالية بسرعة فائقة دون أي تأخير</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-card-title">سهولة التحويل بين المستخدمين</h3>
-                        <p class="feature-card-description">أرسل واستقبل الأموال بسهولة وسلاسة بين مستخدمي التطبيق</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-card-title">بدون رسوم</h3>
-                        <p class="feature-card-description">استمتع بخدماتنا المالية بدون أي رسوم خفية، لتبقى كل معاملتك واضحة وشفافة</p>
+                        <h3 class="card-title">سرعة العمليات</h3>
+                        <p class="card-description">نفّذ معاملاتك المالية بسرعة فائقة دون أي تأخير</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card Section -->
-            <div class="card-section">
-                <div class="card-showcase">
-                    <div class="visa-card">
-                        <div class="card-bg"></div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="card-title">Sham Cash</span>
-                                <div class="card-logo-shape"></div>
-                            </div>
-                            <div class="card-chip">
-                                <div class="chip-line"></div>
-                                <div class="chip-line"></div>
-                                <div class="chip-line"></div>
-                            </div>
-                            <div class="card-number">4222 03ba 5017 4881</div>
-                            <div class="card-footer">
-                                <div class="card-expiry">12/29</div>
-                                <div class="card-holder">SHAM CASH</div>
-                                <div class="card-brand">VISA</div>
-                            </div>
-                            <div class="contactless-icon">
-                                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M 20 15 Q 25 20 20 25" stroke="#fff" stroke-width="2" fill="none"/>
-                                    <path d="M 25 12 Q 32 20 25 28" stroke="#fff" stroke-width="2" fill="none"/>
-                                    <path d="M 30 10 Q 38 20 30 30" stroke="#fff" stroke-width="2" fill="none"/>
-                                </svg>
-                            </div>
+                <div class="cards-grid-3">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="currentColor"/>
+                            </svg>
                         </div>
+                        <h3 class="card-title">سهولة الاستخدام</h3>
+                        <p class="card-description">واجهة تطبيق بسيطة ومباشرة تسهل عليك إجراء العمليات دون تعقيد</p>
                     </div>
-                    
-                    <div class="card-info">
-                        <h3 class="card-info-title">بطاقة شام كاش</h3>
-                        <p class="card-info-text">
-                            للدفع الإلكتروني<br>
-                            نرسل وتستقبل<br>
-                            من حسابك من<br>
-                            جميع دول العالم
-                        </p>
-                        <div class="card-info-badge">
-                            <div class="badge-stripe"></div>
-                            <div class="badge-stripe"></div>
-                            <div class="badge-stripe"></div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="currentColor"/>
+                            </svg>
                         </div>
+                        <h3 class="card-title">أمان الأموال</h3>
+                        <p class="card-description">نضمن حماية كاملة لأموالك ومعاملاتك باستخدام أحدث تقنيات الأمان</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">بدون رسوم</h3>
+                        <p class="card-description">استمتع بخدماتنا المالية بدون أي رسوم خفية، لتبقى كل معاملتك واضحة وشفافة</p>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="section-faq">
+                <h2 class="section-title">الأسئلة الشائعة</h2>
+                <p class="section-description">
+                    نقدم لك إجابات على الأسئلة الأكثر شيوعاً التي قد تكون لديك حول استخدام التطبيق. هدفنا هو تزويدك بكل المعلومات التي تحتاجها لتجربة سلسة ومريحة. إذا كنت تواجه أي استفسار أو مشكلة لم يتم تناولها هنا، لا تتردد في التواصل مع فريق الدعم الذي يتوفر على مدار الساعة لمساعدتك.
+                </p>
+            </section>
         </div>
 
-        <!-- Chat Button -->
-        <button class="chat-button" id="chatBtn">
+        <!-- Footer -->
+        <footer class="footer" id="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="68" height="79" viewBox="0 0 68 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50.2993 55.3317L38.347 48.0665C37.0678 47.289 37.0649 45.4334 38.3415 44.6518L47.8252 38.8454C49.1182 38.0538 49.0946 36.1676 47.7823 35.4085L20.1623 19.4322C19.5443 19.0747 19.1637 18.4149 19.1637 17.7009L19.1637 3.42207C19.1637 1.89188 20.812 0.928516 22.1452 1.6795L66.9816 26.9354C67.6107 27.2898 68 27.9559 68 28.678L68 45.2056C68 45.9219 67.6169 46.5835 66.9957 46.9401L52.3339 55.3571C51.7017 55.72 50.9222 55.7103 50.2993 55.3317Z" fill="url(#paint0_linear_footer)"/>
+                        <path d="M17.7007 23.4865L29.653 30.7516C30.9322 31.5291 30.9351 33.3847 29.6585 34.1664L20.1748 39.9727C18.8818 40.7643 18.9054 42.6505 20.2177 43.4096L47.8377 59.3859C48.4557 59.7434 48.8363 60.4032 48.8363 61.1172V75.396C48.8363 76.9262 47.188 77.8896 45.8548 77.1386L1.01843 51.8827C0.389264 51.5283 0 50.8623 0 50.1401L0 33.6125C0 32.8962 0.38306 32.2346 1.00426 31.878L15.6661 23.461C16.2983 23.0981 17.0778 23.1078 17.7007 23.4865Z" fill="url(#paint1_linear_footer)"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_footer" x1="68.3091" y1="53.7818" x2="29.9818" y2="-23.4909" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#81A0F2"/>
+                                <stop offset="0.270124" stop-color="#2F4095" stop-opacity="0.57"/>
+                                <stop offset="1" stop-color="#81A0F2"/>
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_footer" x1="-0.30909" y1="25.0363" x2="38.0182" y2="102.309" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#81F2BD"/>
+                                <stop offset="0.270124" stop-color="#19796D" stop-opacity="0.57"/>
+                                <stop offset="1" stop-color="#81F2CA"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#" class="footer-link">الأحكام والشروط</a>
+                    <a href="#" class="footer-link">سياسة الخصوصية</a>
+                    <a href="#" class="footer-link">الأسئلة الشائعة</a>
+                    <a href="#" class="footer-link">توثيق الحساب</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="currentColor"/></svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" fill="currentColor"/></svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="currentColor"/></svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06z" fill="currentColor"/></svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Chat Widget -->
+        <button class="chat-widget" id="chatWidget">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 2H4C2.9 2 2.01 2.9 2.01 4L2 22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="currentColor"/>
             </svg>
-            <span>تواصل معنا</span>
         </button>
     </div>
 
