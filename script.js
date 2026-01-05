@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     issueCardBtn.addEventListener('click', function() {
         showNotification('جاري تحويلك لصفحة إصدار البطاقة...', 'success');
         setTimeout(() => {
-            window.location.href = '#issue-card';
+            window.location.href = 'login.html';
         }, 1000);
     });
 
     verifyAccountBtn.addEventListener('click', function() {
         showNotification('جاري تحويلك لصفحة التوثيق...', 'success');
         setTimeout(() => {
-            window.location.href = '#verify-account';
+            window.location.href = 'login.html';
         }, 1000);
     });
 
