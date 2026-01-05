@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - شام كاش</title>
+    <link rel="stylesheet" href="login-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Logo 3D -->
+        <div class="logo-3d">
+            <div class="logo-3d-shape"></div>
+        </div>
+
+        <!-- Login Title -->
+        <h1 class="login-title">تسجيل الدخول</h1>
+
+        <!-- Login Form -->
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <input type="tel" 
+                       class="form-input" 
+                       id="phoneNumber" 
+                       placeholder="رقم الهاتف"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" 
+                       class="form-input" 
+                       id="email" 
+                       placeholder="البريد الالكتروني"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" 
+                       class="form-input" 
+                       id="password" 
+                       placeholder="كلمة السر"
+                       required>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                تسجيل الدخول
+            </button>
+        </form>
+
+        <!-- QR Code Scanner Button -->
+        <button class="qr-scanner-btn" id="qrScannerBtn" title="مسح رمز QR">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                <rect x="13" y="3" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                <rect x="3" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                <rect x="13" y="13" width="8" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+                <rect x="5" y="5" width="4" height="4" fill="currentColor"/>
+                <rect x="15" y="5" width="4" height="4" fill="currentColor"/>
+                <rect x="5" y="15" width="4" height="4" fill="currentColor"/>
+                <rect x="15" y="15" width="4" height="4" fill="currentColor"/>
+            </svg>
+        </button>
+
+        <!-- Back Button -->
+        <button class="back-btn" id="backBtn" title="العودة">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="powered-by">POWERED BY</p>
+            <div class="footer-logo">
+                <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 20 10 L 40 10 L 50 30 L 40 50 L 20 50 L 30 30 Z" fill="#4a5568" opacity="0.6"/>
+                    <path d="M 50 10 L 70 10 L 80 30 L 70 50 L 50 50 L 60 30 Z" fill="#4a5568" opacity="0.4"/>
+                </svg>
+            </div>
+            <p class="version">V 2.2.1</p>
+        </div>
+    </div>
+
+    <script src="login-script.js"></script>
+</body>
+</html>
