@@ -276,6 +276,35 @@ body::before {
     box-shadow: 0 6px 24px rgba(147, 197, 253, 0.5);
 }
 
+.download-agreed-section {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.download-agreed-button {
+    background: linear-gradient(135deg, #1E5BC6 0%, #2563EB 100%);
+    color: white;
+    border: none;
+    padding: 18px 60px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(30, 91, 198, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.download-agreed-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(30, 91, 198, 0.6);
+}
+
 .card-display-section {
     display: flex;
     align-items: center;
@@ -624,6 +653,11 @@ body::before {
         padding: 14px 30px;
     }
     
+    .download-agreed-button {
+        font-size: 18px;
+        padding: 16px 40px;
+    }
+    
     .card-display-section {
         flex-direction: column;
         gap: 40px;
@@ -710,6 +744,11 @@ body::before {
     .exchange-button {
         font-size: 14px;
         padding: 12px 24px;
+    }
+    
+    .download-agreed-button {
+        font-size: 16px;
+        padding: 14px 30px;
     }
     
     .sham-cash-card {
