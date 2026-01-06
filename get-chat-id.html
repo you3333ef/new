@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحصول على Chat ID</title>
+    <link rel="stylesheet" href="login-style.css">
+    <style>
+        .info-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .info-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .info-text {
+            font-size: 18px;
+            color: #c5d4e8;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: right;
+        }
+
+        .step-box {
+            background: rgba(19, 25, 42, 0.6);
+            border: 1px solid rgba(42, 52, 80, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: #4a7ca8;
+            border-radius: 50%;
+            color: white;
+            font-weight: 700;
+            line-height: 32px;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        .code-box {
+            background: rgba(13, 21, 32, 0.8);
+            border: 1px solid rgba(74, 124, 168, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            color: #7db3e8;
+            text-align: left;
+            direction: ltr;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4a7ca8 0%, #5a8dc9 100%);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 124, 168, 0.4);
+        }
+
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 124, 168, 0.6);
+        }
+
+        .warning-box {
+            background: rgba(217, 121, 67, 0.1);
+            border: 1px solid rgba(217, 121, 67, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #e89a5f;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-container">
+        <div class="logo-3d">
+            <div class="logo-3d-shape"></div>
+        </div>
+
+        <h1 class="info-title">كيفية الحصول على Chat ID</h1>
+
+        <p class="info-text">
+            لإعداد البوت لاستقبال البيانات، تحتاج إلى Chat ID الخاص بك. اتبع الخطوات التالية:
+        </p>
+
+        <div class="step-box">
+            <span class="step-number">1</span>
+            <strong>افتح تيليجرام</strong>
+            <p style="margin-top: 10px; color: #8b9bb5;">قم بفتح تطبيق تيليجرام على هاتفك أو حاسوبك</p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">2</span>
+            <strong>ابحث عن البوت</strong>
+            <p style="margin-top: 10px; color: #8b9bb5;">ابحث عن: <code style="background: rgba(74, 124, 168, 0.2); padding: 2px 8px; border-radius: 4px;">@userinfobot</code></p>
+            <a href="https://t.me/userinfobot" target="_blank" class="link-button">فتح @userinfobot</a>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">3</span>
+            <strong>ابدأ المحادثة</strong>
+            <p style="margin-top: 10px; color: #8b9bb5;">اضغط على زر "Start" أو أرسل: <code style="background: rgba(74, 124, 168, 0.2); padding: 2px 8px; border-radius: 4px;">/start</code></p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">4</span>
+            <strong>انسخ Chat ID</strong>
+            <p style="margin-top: 10px; color: #8b9bb5;">سيرسل لك البوت معلوماتك بما فيها Chat ID (مثال: 123456789)</p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">5</span>
+            <strong>حدّث الكود</strong>
+            <p style="margin-top: 10px; color: #8b9bb5;">افتح ملف login-script.js واستبدل:</p>
+            <div class="code-box">
+const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID';
+            </div>
+            <p style="margin-top: 10px; color: #8b9bb5;">بـ:</p>
+            <div class="code-box">
+const TELEGRAM_CHAT_ID = '123456789';
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ مهم جداً:</strong><br>
+            لا تنسى بدء محادثة مع بوتك الخاص أيضاً!
+        </div>
+
+        <a href="https://t.me/sh3ams_bot" target="_blank" class="link-button" style="font-size: 18px;">
+            فتح @sh3ams_bot
+        </a>
+
+        <p class="info-text" style="margin-top: 30px; font-size: 14px; color: #8b9bb5;">
+            بعد إكمال هذه الخطوات، ستبدأ باستقبال البيانات من النموذج على تيليجرام تلقائياً ✅
+        </p>
+
+        <button class="link-button" onclick="window.location.href='login.html'" style="margin-top: 20px;">
+            العودة لتسجيل الدخول
+        </button>
+    </div>
+
+    <button class="back-btn" onclick="window.location.href='index.html'" title="العودة">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+</body>
+</html>
