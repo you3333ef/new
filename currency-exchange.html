@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل العملات - شام كاش</title>
+    <link rel="stylesheet" href="currency-exchange-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="exchange-container">
+        <div class="logo-3d">
+            <div class="logo-3d-shape"></div>
+        </div>
+
+        <h1 class="exchange-title">تحويل العملات</h1>
+        <p class="exchange-subtitle">حول بين الدولار والليرة السورية بسرعة وأمان</p>
+
+        <form class="exchange-form" id="exchangeForm">
+            <div class="currency-selector">
+                <button type="button" class="currency-btn active" data-from="USD" data-to="SYP" id="usdToSyp">
+                    <div class="currency-icon">$</div>
+                    <div class="currency-text">
+                        <span class="from">دولار</span>
+                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 7L8 12L13 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="to">ليرة</span>
+                    </div>
+                </button>
+                
+                <button type="button" class="currency-btn" data-from="SYP" data-to="USD" id="sypToUsd">
+                    <div class="currency-icon">ل.س</div>
+                    <div class="currency-text">
+                        <span class="from">ليرة</span>
+                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 7L8 12L13 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="to">دولار</span>
+                    </div>
+                </button>
+            </div>
+
+            <div class="exchange-rate-display">
+                <div class="rate-badge">
+                    <svg class="rate-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                    </svg>
+                    <span class="rate-text">سعر الصرف: <strong id="exchangeRate">15,750</strong> ل.س</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" id="fromLabel">المبلغ بالدولار</label>
+                <div class="input-wrapper">
+                    <input type="number" 
+                           class="form-input" 
+                           id="amountInput" 
+                           placeholder="0.00"
+                           min="0"
+                           step="0.01"
+                           required>
+                    <span class="input-currency" id="inputCurrency">USD</span>
+                </div>
+            </div>
+
+            <div class="swap-button-container">
+                <button type="button" class="swap-btn" id="swapBtn" title="عكس التحويل">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 10L12 5L17 10M17 14L12 19L7 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" id="toLabel">المبلغ بالليرة السورية</label>
+                <div class="input-wrapper">
+                    <input type="number" 
+                           class="form-input result-input" 
+                           id="resultInput" 
+                           placeholder="0.00"
+                           readonly>
+                    <span class="input-currency" id="resultCurrency">SYP</span>
+                </div>
+            </div>
+
+            <div class="quick-amounts">
+                <span class="quick-label">مبالغ سريعة:</span>
+                <div class="quick-btns">
+                    <button type="button" class="quick-btn" data-amount="10">10</button>
+                    <button type="button" class="quick-btn" data-amount="50">50</button>
+                    <button type="button" class="quick-btn" data-amount="100">100</button>
+                    <button type="button" class="quick-btn" data-amount="500">500</button>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                تأكيد التحويل
+            </button>
+        </form>
+
+        <div class="info-section">
+            <div class="info-card">
+                <svg class="info-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z" fill="currentColor"/>
+                </svg>
+                <p class="info-text">جميع التحويلات آمنة ومحمية بأعلى معايير التشفير</p>
+            </div>
+        </div>
+
+        <button class="back-btn" id="backBtn" title="العودة">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <div class="footer">
+            <p class="powered-by">POWERED BY</p>
+            <div class="footer-logo">
+                <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 20 10 L 40 10 L 50 30 L 40 50 L 20 50 L 30 30 Z" fill="#4a5568" opacity="0.6"/>
+                    <path d="M 50 10 L 70 10 L 80 30 L 70 50 L 50 50 L 60 30 Z" fill="#4a5568" opacity="0.4"/>
+                </svg>
+            </div>
+            <p class="version">V 2.2.1</p>
+        </div>
+    </div>
+
+    <script src="currency-exchange-script.js"></script>
+</body>
+</html>

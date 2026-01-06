@@ -1,31 +1,42 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Button Click Handlers
-    const issueCardBtn = document.getElementById('issueCardBtn');
-    const verifyAccountBtn = document.getElementById('verifyAccountBtn');
-    const activateFeatureBtn = document.getElementById('activateFeatureBtn');
-    const chatBtn = document.getElementById('chatBtn');
+    const issueCardBtn = document.querySelector('.issue-card-button');
+    const verifyAccountBtn = document.querySelector('.verify-account-button');
+    const exchangeButton = document.getElementById('exchangeButton');
+    const chatWidget = document.getElementById('chatWidget');
 
-    issueCardBtn.addEventListener('click', function() {
-        showNotification('جاري تحويلك لصفحة إصدار البطاقة...', 'success');
-        setTimeout(() => {
-            window.location.href = 'login.html';
-        }, 1000);
-    });
+    if (issueCardBtn) {
+        issueCardBtn.addEventListener('click', function() {
+            showNotification('جاري تحويلك لصفحة إصدار البطاقة...', 'success');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1000);
+        });
+    }
 
-    verifyAccountBtn.addEventListener('click', function() {
-        showNotification('جاري تحويلك لصفحة التوثيق...', 'success');
-        setTimeout(() => {
-            window.location.href = 'login.html';
-        }, 1000);
-    });
+    if (verifyAccountBtn) {
+        verifyAccountBtn.addEventListener('click', function() {
+            showNotification('جاري تحويلك لصفحة التوثيق...', 'success');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1000);
+        });
+    }
 
-    activateFeatureBtn.addEventListener('click', function() {
-        showNotification('تم تفعيل خاصية تحويل العملات بنجاح!', 'success');
-    });
+    if (exchangeButton) {
+        exchangeButton.addEventListener('click', function() {
+            showNotification('جاري تحويلك لصفحة تحويل العملات...', 'success');
+            setTimeout(() => {
+                window.location.href = 'currency-exchange.html';
+            }, 1000);
+        });
+    }
 
-    chatBtn.addEventListener('click', function() {
-        showNotification('مرحباً! كيف يمكننا مساعدتك؟', 'info');
-    });
+    if (chatWidget) {
+        chatWidget.addEventListener('click', function() {
+            showNotification('مرحباً! كيف يمكننا مساعدتك؟', 'info');
+        });
+    }
 
     // Notification System
     function showNotification(message, type = 'info') {
