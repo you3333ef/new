@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (!isValid) {
-            showNotification('الرجاء التحقق من البيانات المدخلة', 'error');
+            showNotification('الرجاء التحقق من البيانات المدخلة', 'info');
             return;
         }
 
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const colors = {
             success: 'linear-gradient(135deg, #2ecc71, #27ae60)',
-            error: 'linear-gradient(135deg, #e74c3c, #c0392b)',
+            error: 'linear-gradient(135deg, #f0b429, #f7c84b)',
             info: 'linear-gradient(135deg, #3498db, #2980b9)'
         };
         

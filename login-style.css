@@ -5,12 +5,12 @@
 }
 
 :root {
-    --primary-blue: #4a7ca8;
-    --dark-blue: #13192a;
-    --darker-blue: #0d1520;
+    --primary-blue: #3b7cb8;
+    --dark-blue: #1a2332;
+    --darker-blue: #0f1419;
     --input-bg: #f5f5f5;
-    --teal: #4a9b8e;
-    --teal-dark: #2d6b5f;
+    --teal: #3fb4a8;
+    --teal-dark: #2a8a7f;
 }
 
 html {
@@ -20,7 +20,7 @@ html {
 body {
     font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
     direction: rtl;
-    background: linear-gradient(180deg, #13192a 0%, #0d1520 50%, #13192a 100%);
+    background: linear-gradient(180deg, #1a2840 0%, #0f1824 50%, #1a2840 100%);
     min-height: 100vh;
     color: #ffffff;
     overflow: hidden;
@@ -38,8 +38,8 @@ body::before {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 30% 20%, rgba(74, 124, 168, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(74, 155, 142, 0.06) 0%, transparent 50%);
+        radial-gradient(circle at 30% 20%, rgba(59, 124, 184, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(63, 180, 168, 0.08) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -49,8 +49,8 @@ body::before {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 420px;
-    padding: 30px 25px;
+    max-width: 480px;
+    padding: 45px 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,13 +70,13 @@ body::before {
 
 /* Logo 3D */
 .logo-3d {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     animation: float 6s ease-in-out infinite;
 }
 
 .logo-3d-shape {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     position: relative;
     transform-style: preserve-3d;
     animation: rotate3d 20s linear infinite;
@@ -91,16 +91,16 @@ body::before {
 }
 
 .logo-3d-shape::before {
-    background: linear-gradient(135deg, #4a9b8e 0%, #4a7ca8 100%);
+    background: linear-gradient(135deg, #3fb4a8 0%, #3b7cb8 100%);
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    transform: translateZ(20px);
-    box-shadow: 0 10px 40px rgba(74, 155, 142, 0.4);
+    transform: translateZ(25px);
+    box-shadow: 0 15px 50px rgba(63, 180, 168, 0.5);
 }
 
 .logo-3d-shape::after {
-    background: linear-gradient(225deg, #4a7ca8 0%, #2d5a8a 100%);
+    background: linear-gradient(225deg, #3b7cb8 0%, #2a5a8a 100%);
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    transform: translateZ(-20px) rotateY(180deg);
+    transform: translateZ(-25px) rotateY(180deg);
 }
 
 @keyframes rotate3d {
@@ -130,15 +130,14 @@ body::before {
 /* Login Title */
 .login-title {
     font-family: 'Cairo', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 800;
     color: #ffffff;
-    margin-bottom: 35px;
+    margin-bottom: 55px;
     text-align: center;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    letter-spacing: -0.5px;
     animation: fadeInDown 0.8s ease-out 0.2s both;
-    line-height: 1.5;
-    max-width: 380px;
 }
 
 @keyframes fadeInDown {
@@ -157,7 +156,7 @@ body::before {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
@@ -174,224 +173,56 @@ body::before {
 
 .form-group {
     width: 100%;
-    position: relative;
-}
-
-.password-group {
-    position: relative;
 }
 
 .form-input {
     width: 100%;
-    padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.98);
+    padding: 22px 28px;
+    background: rgba(255, 255, 255, 0.96);
     border: 2px solid transparent;
-    border-radius: 12px;
+    border-radius: 14px;
     font-family: 'Cairo', sans-serif;
     font-size: 16px;
     font-weight: 600;
-    color: #1a2332;
+    color: #2a3544;
     text-align: right;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-}
-
-.password-group .form-input {
-    padding-left: 55px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
 }
 
 .form-input::placeholder {
-    color: #95a3b8;
-    font-weight: 500;
-    opacity: 1;
+    color: #b8bfc7;
+    font-weight: 400;
 }
 
 .form-input:focus {
     outline: none;
     background: rgba(255, 255, 255, 1);
-    border-color: #4a7ca8;
-    box-shadow: 0 8px 30px rgba(74, 124, 168, 0.4), 0 0 0 4px rgba(74, 124, 168, 0.15);
-    transform: translateY(-3px) scale(1.01);
+    border-color: #3b7cb8;
+    box-shadow: 0 8px 30px rgba(59, 124, 184, 0.4);
+    transform: translateY(-3px);
 }
 
-.form-input.has-value {
-    background: rgba(255, 255, 255, 1);
-    border-color: rgba(74, 155, 142, 0.3);
-    color: #0d1520;
-    font-weight: 700;
-}
-
-.form-input.success {
-    border-color: #2ecc71;
-    background: rgba(46, 204, 113, 0.05);
-}
-
-.form-input.error {
-    border-color: #e74c3c;
-    background: rgba(231, 76, 60, 0.05);
-    animation: shake 0.4s;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-}
-
-.form-input:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.qr-scanner-btn {
-    position: fixed;
-    bottom: 100px;
-    left: 30px;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.98);
-    border: none;
-    border-radius: 50%;
-    color: #4a7ca8;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.8);
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 100;
-    animation: fadeInLeft 1s ease-out 0.8s both;
-    backdrop-filter: blur(10px);
-}
-
-.qr-scanner-btn svg {
-    width: 28px;
-    height: 28px;
-}
-
-.qr-scanner-btn:hover {
-    transform: scale(1.15) rotate(5deg);
-    background: #ffffff;
-    box-shadow: 0 12px 40px rgba(74, 124, 168, 0.35), 0 0 0 4px rgba(74, 124, 168, 0.15);
-    color: #5a8dc9;
-}
-
-.qr-scanner-btn:active {
-    transform: scale(1.05);
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.back-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 54px;
-    height: 54px;
-    background: rgba(255, 255, 255, 0.98);
-    border: none;
-    border-radius: 50%;
-    color: #4a7ca8;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.8);
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 100;
-    animation: fadeInRight 1s ease-out 0.8s both;
-    backdrop-filter: blur(10px);
-}
-
-.back-btn svg {
-    width: 24px;
-    height: 24px;
-}
-
-.back-btn:hover {
-    transform: scale(1.18) rotate(-5deg);
-    background: #ffffff;
-    box-shadow: 0 12px 40px rgba(74, 124, 168, 0.35), 0 0 0 4px rgba(74, 124, 168, 0.15);
-}
-
-.back-btn:active {
-    transform: scale(1.05);
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.footer {
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    z-index: 50;
-    animation: fadeIn 1s ease-out 1s both;
-}
-
-.powered-by {
-    font-size: 10px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-.footer-logo {
-    width: 50px;
-    height: 30px;
-    opacity: 0.5;
-}
-
-.footer-logo svg {
-    width: 100%;
-    height: 100%;
-}
-
-.version {
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 3px;
+.form-input:hover:not(:focus) {
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.18);
+    transform: translateY(-1px);
 }
 
 /* Submit Button */
 .submit-btn {
     width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, #4a7ca8 0%, #5a8dc9 100%);
+    padding: 22px;
+    background: linear-gradient(135deg, #3b7cb8 0%, #4a8dc9 100%);
     border: none;
     border-radius: 50px;
     font-family: 'Cairo', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 21px;
+    font-weight: 800;
     color: white;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 25px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 25px rgba(74, 124, 168, 0.4);
+    box-shadow: 0 10px 30px rgba(59, 124, 184, 0.5);
     position: relative;
     overflow: hidden;
 }
@@ -413,79 +244,32 @@ body::before {
 }
 
 .submit-btn:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(74, 124, 168, 0.65), 0 0 0 6px rgba(74, 124, 168, 0.1);
-}
-
-.submit-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.toggle-password {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #4a7ca8;
-    cursor: pointer;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    border-radius: 8px;
-    width: 40px;
-    height: 40px;
-}
-
-.toggle-password:hover {
-    background: rgba(74, 124, 168, 0.1);
-    color: #5a8dc9;
-}
-
-.toggle-password:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-.toggle-password .eye-icon {
-    width: 24px;
-    height: 24px;
-}
-
-.toggle-password.active .eye-open {
-    display: none;
-}
-
-.toggle-password.active .eye-closed {
-    display: block !important;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(59, 124, 184, 0.7);
 }
 
 .submit-btn:active {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74, 124, 168, 0.4);
+    box-shadow: 0 6px 20px rgba(59, 124, 184, 0.4);
 }
 
 /* QR Scanner Button */
 .qr-scanner-btn {
     position: fixed;
-    bottom: 120px;
-    left: 25px;
-    width: 55px;
-    height: 55px;
-    background: rgba(74, 93, 120, 0.85);
-    backdrop-filter: blur(10px);
-    border: none;
-    border-radius: 14px;
+    bottom: 140px;
+    left: 30px;
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, rgba(59, 124, 184, 0.9) 0%, rgba(74, 141, 201, 0.85) 100%);
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
     color: #ffffff;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
     z-index: 100;
     animation: fadeInLeft 1s ease-out 0.8s both;
@@ -503,14 +287,15 @@ body::before {
 }
 
 .qr-scanner-btn svg {
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
 }
 
 .qr-scanner-btn:hover {
-    transform: scale(1.1);
-    background: rgba(74, 124, 168, 0.9);
-    box-shadow: 0 10px 30px rgba(74, 124, 168, 0.4);
+    transform: scale(1.15);
+    background: linear-gradient(135deg, rgba(74, 141, 201, 0.95) 0%, rgba(89, 155, 213, 0.9) 100%);
+    box-shadow: 0 12px 35px rgba(59, 124, 184, 0.5);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 .qr-scanner-btn:active {
@@ -520,19 +305,19 @@ body::before {
 /* Back Button */
 .back-btn {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.95);
-    border: none;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.97);
+    border: 2px solid rgba(59, 124, 184, 0.15);
     border-radius: 50%;
     color: #3b7cb8;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
     z-index: 100;
     animation: fadeInRight 1s ease-out 0.8s both;
@@ -550,14 +335,15 @@ body::before {
 }
 
 .back-btn svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
 }
 
 .back-btn:hover {
-    transform: scale(1.15);
+    transform: scale(1.2);
     background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    border-color: rgba(59, 124, 184, 0.3);
 }
 
 .back-btn:active {
@@ -567,28 +353,28 @@ body::before {
 /* Footer */
 .footer {
     position: fixed;
-    bottom: 25px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     z-index: 50;
     animation: fadeIn 1s ease-out 1s both;
 }
 
 .powered-by {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .footer-logo {
-    width: 50px;
-    height: 30px;
+    width: 60px;
+    height: 36px;
     opacity: 0.5;
 }
 
@@ -598,10 +384,10 @@ body::before {
 }
 
 .version {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.5);
-    margin-top: 3px;
+    margin-top: 5px;
 }
 
 /* Loading Animation */
@@ -622,128 +408,126 @@ body::before {
 /* Success State */
 .form-input.success {
     border: 2px solid #2ecc71;
-    background: rgba(46, 204, 113, 0.1);
+    background: rgba(46, 204, 113, 0.08);
 }
 
 .form-input.error {
-    border: 2px solid #e74c3c;
-    background: rgba(231, 76, 60, 0.1);
+    border: 2px solid #f0b429;
+    background: rgba(240, 180, 41, 0.08);
     animation: shake 0.5s;
 }
 
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .login-container {
-        padding: 25px 20px;
+        padding: 30px 25px;
     }
 
     .logo-3d-shape {
-        width: 85px;
-        height: 85px;
+        width: 110px;
+        height: 110px;
     }
 
     .login-title {
-        font-size: 18px;
-        margin-bottom: 30px;
-        max-width: 320px;
+        font-size: 30px;
+        margin-bottom: 40px;
     }
 
     .form-input {
-        padding: 14px 18px;
-        font-size: 14px;
+        padding: 18px 22px;
+        font-size: 15px;
     }
 
     .submit-btn {
-        padding: 14px;
-        font-size: 16px;
+        padding: 18px;
+        font-size: 18px;
     }
 
     .qr-scanner-btn {
-        width: 50px;
-        height: 50px;
-        bottom: 110px;
-        left: 20px;
+        width: 60px;
+        height: 60px;
+        bottom: 120px;
+        left: 25px;
     }
 
     .qr-scanner-btn svg {
-        width: 24px;
-        height: 24px;
+        width: 30px;
+        height: 30px;
     }
 
     .back-btn {
-        width: 45px;
-        height: 45px;
-        bottom: 20px;
-        right: 20px;
+        width: 55px;
+        height: 55px;
+        bottom: 25px;
+        right: 25px;
     }
 
     .back-btn svg {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
     }
 }
 
 @media (max-width: 480px) {
     .login-container {
-        padding: 20px 18px;
+        padding: 20px 20px;
         max-width: 100%;
     }
 
     .logo-3d-shape {
-        width: 75px;
-        height: 75px;
+        width: 90px;
+        height: 90px;
     }
 
     .login-title {
-        font-size: 16px;
-        margin-bottom: 28px;
-        max-width: 280px;
+        font-size: 26px;
+        margin-bottom: 35px;
     }
 
     .form-input {
-        padding: 13px 16px;
-        font-size: 13px;
+        padding: 16px 20px;
+        font-size: 14px;
     }
 
     .submit-btn {
-        padding: 14px;
-        font-size: 16px;
+        padding: 16px;
+        font-size: 17px;
     }
 
     .footer {
-        bottom: 20px;
+        bottom: 25px;
     }
 
     .powered-by {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .footer-logo {
-        width: 45px;
-        height: 27px;
+        width: 50px;
+        height: 30px;
     }
 
     .version {
-        font-size: 11px;
+        font-size: 12px;
     }
 }
 
 /* Accessibility */
 .form-input:focus-visible {
-    outline: 3px solid rgba(74, 124, 168, 0.5);
+    outline: 3px solid rgba(59, 124, 184, 0.5);
     outline-offset: 2px;
 }
 
 .submit-btn:focus-visible,
 .qr-scanner-btn:focus-visible,
 .back-btn:focus-visible {
-    outline: 3px solid rgba(74, 124, 168, 0.5);
+    outline: 3px solid rgba(59, 124, 184, 0.5);
     outline-offset: 3px;
 }
 
