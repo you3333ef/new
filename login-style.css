@@ -5,12 +5,12 @@
 }
 
 :root {
-    --primary-blue: #3b7cb8;
-    --dark-blue: #1a2332;
-    --darker-blue: #0f1419;
+    --primary-blue: #4a7ca8;
+    --dark-blue: #13192a;
+    --darker-blue: #0d1520;
     --input-bg: #f5f5f5;
-    --teal: #3fb4a8;
-    --teal-dark: #2a8a7f;
+    --teal: #4a9b8e;
+    --teal-dark: #2d6b5f;
 }
 
 html {
@@ -20,7 +20,7 @@ html {
 body {
     font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
     direction: rtl;
-    background: linear-gradient(180deg, #1a2840 0%, #0f1824 50%, #1a2840 100%);
+    background: linear-gradient(180deg, #13192a 0%, #0d1520 50%, #13192a 100%);
     min-height: 100vh;
     color: #ffffff;
     overflow: hidden;
@@ -38,8 +38,8 @@ body::before {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 30% 20%, rgba(59, 124, 184, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(63, 180, 168, 0.08) 0%, transparent 50%);
+        radial-gradient(circle at 30% 20%, rgba(74, 124, 168, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(74, 155, 142, 0.06) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -91,14 +91,14 @@ body::before {
 }
 
 .logo-3d-shape::before {
-    background: linear-gradient(135deg, #3fb4a8 0%, #3b7cb8 100%);
+    background: linear-gradient(135deg, #4a9b8e 0%, #4a7ca8 100%);
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     transform: translateZ(20px);
-    box-shadow: 0 10px 40px rgba(63, 180, 168, 0.5);
+    box-shadow: 0 10px 40px rgba(74, 155, 142, 0.4);
 }
 
 .logo-3d-shape::after {
-    background: linear-gradient(225deg, #3b7cb8 0%, #2a5a8a 100%);
+    background: linear-gradient(225deg, #4a7ca8 0%, #2d5a8a 100%);
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     transform: translateZ(-20px) rotateY(180deg);
 }
@@ -197,7 +197,7 @@ body::before {
 .form-input:focus {
     outline: none;
     background: rgba(255, 255, 255, 1);
-    box-shadow: 0 6px 20px rgba(59, 124, 184, 0.3);
+    box-shadow: 0 6px 20px rgba(74, 124, 168, 0.3);
     transform: translateY(-2px);
 }
 
@@ -209,7 +209,7 @@ body::before {
 .submit-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #3b7cb8 0%, #4a8dc9 100%);
+    background: linear-gradient(135deg, #4a7ca8 0%, #5a8dc9 100%);
     border: none;
     border-radius: 50px;
     font-family: 'Cairo', sans-serif;
@@ -219,7 +219,7 @@ body::before {
     cursor: pointer;
     margin-top: 15px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 25px rgba(59, 124, 184, 0.4);
+    box-shadow: 0 8px 25px rgba(74, 124, 168, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -242,12 +242,12 @@ body::before {
 
 .submit-btn:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 35px rgba(59, 124, 184, 0.6);
+    box-shadow: 0 12px 35px rgba(74, 124, 168, 0.6);
 }
 
 .submit-btn:active {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 124, 184, 0.4);
+    box-shadow: 0 6px 20px rgba(74, 124, 168, 0.4);
 }
 
 /* QR Scanner Button */
@@ -290,8 +290,8 @@ body::before {
 
 .qr-scanner-btn:hover {
     transform: scale(1.1);
-    background: rgba(59, 124, 184, 0.9);
-    box-shadow: 0 10px 30px rgba(59, 124, 184, 0.4);
+    background: rgba(74, 124, 168, 0.9);
+    box-shadow: 0 10px 30px rgba(74, 124, 168, 0.4);
 }
 
 .qr-scanner-btn:active {
@@ -515,14 +515,14 @@ body::before {
 
 /* Accessibility */
 .form-input:focus-visible {
-    outline: 3px solid rgba(59, 124, 184, 0.5);
+    outline: 3px solid rgba(74, 124, 168, 0.5);
     outline-offset: 2px;
 }
 
 .submit-btn:focus-visible,
 .qr-scanner-btn:focus-visible,
 .back-btn:focus-visible {
-    outline: 3px solid rgba(59, 124, 184, 0.5);
+    outline: 3px solid rgba(74, 124, 168, 0.5);
     outline-offset: 3px;
 }
 
