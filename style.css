@@ -18,6 +18,8 @@
     --grid-color: rgba(42, 52, 66, 0.2);
     --button-primary: #5B84D4;
     --button-hover: #7A9BE8;
+    --gold: #f0b429;
+    --gold-light: #f7c84b;
 }
 
 html {
@@ -144,10 +146,16 @@ body::before {
     cursor: pointer;
     transition: all 0.3s ease;
     color: white;
+    box-shadow: 0 4px 15px rgba(91, 132, 212, 0.3);
 }
 
 .user-icon-btn:hover {
     background: var(--button-hover);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(91, 132, 212, 0.5);
+}
+
+.user-icon-btn:active {
     transform: scale(1.05);
 }
 
@@ -174,106 +182,200 @@ body::before {
     background: linear-gradient(135deg, #1E5BC6 0%, #2563EB 100%);
     color: white;
     border: none;
-    padding: 20px 80px;
+    padding: 22px 85px;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 800;
     font-family: 'Cairo', sans-serif;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(30, 91, 198, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 6px 30px rgba(30, 91, 198, 0.5);
     min-width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.issue-card-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.issue-card-button:hover::before {
+    transform: translateX(100%);
 }
 
 .issue-card-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(30, 91, 198, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(30, 91, 198, 0.7);
+}
+
+.issue-card-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 25px rgba(30, 91, 198, 0.5);
 }
 
 .verification-badge {
-    margin: 20px 0;
+    margin: 25px 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 .check-icon svg {
-    filter: drop-shadow(0 4px 12px rgba(30, 144, 255, 0.4));
+    filter: drop-shadow(0 6px 20px rgba(30, 144, 255, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.check-icon:hover svg {
+    transform: scale(1.05);
 }
 
 .verify-account-button {
     background: linear-gradient(135deg, #1E5BC6 0%, #2563EB 100%);
     color: white;
     border: none;
-    padding: 18px 60px;
+    padding: 20px 65px;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'Cairo', sans-serif;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(30, 91, 198, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 6px 30px rgba(30, 91, 198, 0.5);
     display: flex;
     align-items: center;
     gap: 12px;
     min-width: 350px;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.verify-account-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.verify-account-button:hover::before {
+    transform: translateX(100%);
 }
 
 .verify-account-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(30, 91, 198, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(30, 91, 198, 0.7);
+}
+
+.verify-account-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 25px rgba(30, 91, 198, 0.5);
 }
 
 .hero-title {
     font-family: 'Tajawal', sans-serif;
-    font-size: 96px;
+    font-size: 100px;
     font-weight: 900;
     color: var(--text-primary);
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     line-height: 1.1;
-    letter-spacing: -1px;
+    letter-spacing: -2px;
+    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 34px;
+    font-weight: 700;
     color: var(--text-secondary);
-    margin-bottom: 60px;
-    line-height: 1.4;
+    margin-bottom: 65px;
+    line-height: 1.5;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
 
 .currency-exchange-section {
-    background: rgba(26, 35, 50, 0.6);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 40px;
+    background: linear-gradient(135deg, rgba(240, 180, 41, 0.15) 0%, rgba(247, 200, 75, 0.1) 100%);
+    border: 2px solid rgba(240, 180, 41, 0.3);
+    border-radius: 20px;
+    padding: 45px;
     margin-bottom: 60px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(240, 180, 41, 0.2);
+    transition: all 0.3s ease;
+}
+
+.currency-exchange-section:hover {
+    box-shadow: 0 12px 40px rgba(240, 180, 41, 0.3);
+    transform: translateY(-2px);
 }
 
 .exchange-text {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 21px;
+    font-weight: 700;
     color: var(--text-primary);
-    line-height: 1.8;
-    margin-bottom: 30px;
+    line-height: 2;
+    margin-bottom: 32px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .exchange-button {
-    background: linear-gradient(135deg, #93C5FD 0%, #BFDBFE 100%);
-    color: #1E3A8A;
+    background: linear-gradient(135deg, #f0b429 0%, #f7c84b 100%);
+    color: #5a3a00;
     border: none;
-    padding: 16px 50px;
-    font-size: 18px;
-    font-weight: 700;
+    padding: 18px 55px;
+    font-size: 19px;
+    font-weight: 800;
     font-family: 'Cairo', sans-serif;
-    border-radius: 8px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(147, 197, 253, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 6px 25px rgba(240, 180, 41, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.exchange-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.exchange-button:hover::before {
+    transform: translateX(100%);
 }
 
 .exchange-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(147, 197, 253, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(240, 180, 41, 0.6);
+}
+
+.exchange-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 20px rgba(240, 180, 41, 0.4);
 }
 
 .card-display-section {
@@ -285,19 +387,21 @@ body::before {
 }
 
 .sham-cash-card {
-    width: 400px;
-    height: 250px;
-    border-radius: 20px;
+    width: 420px;
+    height: 260px;
+    border-radius: 24px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
     transform: perspective(1000px) rotateY(-5deg);
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid rgba(255, 255, 255, 0.1);
 }
 
 .sham-cash-card:hover {
-    transform: perspective(1000px) rotateY(0deg) translateY(-10px);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    transform: perspective(1000px) rotateY(0deg) translateY(-15px);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.7);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .card-gradient {
@@ -307,7 +411,18 @@ body::before {
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFC837 100%);
-    opacity: 0.9;
+    opacity: 0.95;
+}
+
+.card-gradient::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    opacity: 0.6;
 }
 
 .card-content {
@@ -327,10 +442,11 @@ body::before {
 }
 
 .card-logo-text {
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 26px;
+    font-weight: 900;
     color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
 }
 
 .card-chip {
@@ -340,11 +456,11 @@ body::before {
 }
 
 .card-number {
-    font-size: 22px;
-    font-weight: 500;
-    letter-spacing: 3px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 4px;
     font-family: 'Courier New', monospace;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
     margin-top: 20px;
 }
 
@@ -406,20 +522,22 @@ body::before {
 }
 
 .section-title {
-    font-size: 48px;
-    font-weight: 700;
+    font-size: 52px;
+    font-weight: 800;
     color: var(--text-primary);
-    margin-bottom: 32px;
+    margin-bottom: 36px;
     text-align: center;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .section-description {
     font-size: 18px;
-    line-height: 1.8;
+    line-height: 2;
     color: var(--text-secondary);
     text-align: center;
-    max-width: 900px;
-    margin: 0 auto 64px;
+    max-width: 920px;
+    margin: 0 auto 70px;
+    font-weight: 500;
 }
 
 .cards-grid-3 {
@@ -431,30 +549,38 @@ body::before {
 
 .info-card {
     background: var(--bg-card);
-    padding: 48px 32px;
-    border-radius: 24px;
+    padding: 50px 35px;
+    border-radius: 20px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid var(--border-color);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .info-card:hover {
-    transform: translateY(-4px);
-    background: rgba(26, 35, 50, 0.7);
-    border-color: rgba(129, 160, 242, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px);
+    background: rgba(26, 35, 50, 0.75);
+    border-color: rgba(129, 160, 242, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 .card-icon {
-    width: 72px;
-    height: 72px;
-    background: rgba(42, 52, 66, 0.5);
-    border-radius: 16px;
-    margin: 0 auto 24px;
+    width: 76px;
+    height: 76px;
+    background: linear-gradient(135deg, rgba(42, 52, 66, 0.6) 0%, rgba(42, 52, 66, 0.4) 100%);
+    border-radius: 18px;
+    margin: 0 auto 28px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover .card-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card-icon svg {
@@ -464,16 +590,18 @@ body::before {
 }
 
 .card-title {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 21px;
+    font-weight: 800;
     color: var(--text-primary);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-description {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text-secondary);
+    font-weight: 500;
 }
 
 .footer {
@@ -550,25 +678,30 @@ body::before {
     position: fixed;
     bottom: 32px;
     right: 32px;
-    width: 64px;
-    height: 64px;
+    width: 68px;
+    height: 68px;
     border-radius: 50%;
-    background: var(--button-primary);
+    background: linear-gradient(135deg, #5B84D4 0%, #7A9BE8 100%);
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(91, 132, 212, 0.4);
+    box-shadow: 0 10px 30px rgba(91, 132, 212, 0.5);
     z-index: 999;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     color: white;
 }
 
 .chat-widget:hover {
-    background: var(--button-hover);
-    transform: scale(1.1);
-    box-shadow: 0 12px 32px rgba(91, 132, 212, 0.5);
+    background: linear-gradient(135deg, #7A9BE8 0%, #8EABF0 100%);
+    transform: scale(1.15);
+    box-shadow: 0 15px 40px rgba(91, 132, 212, 0.6);
+}
+
+.chat-widget:active {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(91, 132, 212, 0.5);
 }
 
 @media (max-width: 1024px) {
