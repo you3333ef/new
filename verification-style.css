@@ -8,9 +8,9 @@
     --primary-blue: #4a7ca8;
     --dark-blue: #13192a;
     --darker-blue: #0d1520;
-    --input-bg: #f5f5f5;
     --teal: #4a9b8e;
-    --teal-dark: #2d6b5f;
+    --error-red: #e74c3c;
+    --whatsapp-green: #25D366;
 }
 
 html {
@@ -44,8 +44,7 @@ body::before {
     z-index: 0;
 }
 
-/* Login Container */
-.login-container {
+.verification-container {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -68,7 +67,6 @@ body::before {
     }
 }
 
-/* Logo 3D */
 .logo-3d {
     margin-bottom: 30px;
     animation: float 6s ease-in-out infinite;
@@ -127,18 +125,22 @@ body::before {
     }
 }
 
-/* Login Title */
-.login-title {
+.verification-title {
     font-family: 'Cairo', sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
     text-align: center;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     animation: fadeInDown 0.8s ease-out 0.2s both;
-    line-height: 1.5;
-    max-width: 380px;
+}
+
+.verification-subtitle {
+    font-size: 16px;
+    color: #8b9bb5;
+    margin-bottom: 35px;
+    text-align: center;
 }
 
 @keyframes fadeInDown {
@@ -152,12 +154,11 @@ body::before {
     }
 }
 
-/* Login Form */
-.login-form {
+.verification-form {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
@@ -172,42 +173,52 @@ body::before {
     }
 }
 
-.form-group {
-    width: 100%;
+.code-inputs {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    direction: ltr;
 }
 
-.form-input {
-    width: 100%;
-    padding: 16px 20px;
+.code-input {
+    width: 50px;
+    height: 60px;
     background: rgba(255, 255, 255, 0.95);
-    border: none;
-    border-radius: 10px;
+    border: 2px solid transparent;
+    border-radius: 12px;
     font-family: 'Cairo', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 24px;
+    font-weight: 700;
     color: #2a3544;
-    text-align: right;
+    text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.form-input::placeholder {
-    color: #b8bfc7;
-    font-weight: 400;
-}
-
-.form-input:focus {
+.code-input:focus {
     outline: none;
     background: rgba(255, 255, 255, 1);
+    border-color: #4a7ca8;
     box-shadow: 0 6px 20px rgba(74, 124, 168, 0.3);
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
 }
 
-.form-input:hover {
+.code-input:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Submit Button */
+.code-input.error {
+    border-color: #e74c3c;
+    animation: shake 0.5s;
+    background: rgba(255, 200, 200, 0.95);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
 .submit-btn {
     width: 100%;
     padding: 16px;
@@ -252,55 +263,95 @@ body::before {
     box-shadow: 0 6px 20px rgba(74, 124, 168, 0.4);
 }
 
-/* QR Scanner Button */
-.qr-scanner-btn {
-    position: fixed;
-    bottom: 120px;
-    left: 25px;
-    width: 55px;
-    height: 55px;
-    background: rgba(74, 93, 120, 0.85);
-    backdrop-filter: blur(10px);
-    border: none;
-    border-radius: 14px;
-    color: #ffffff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    z-index: 100;
-    animation: fadeInLeft 1s ease-out 0.8s both;
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-@keyframes fadeInLeft {
+.error-message {
+    display: none;
+    background: rgba(231, 76, 60, 0.15);
+    border: 1px solid rgba(231, 76, 60, 0.4);
+    border-radius: 12px;
+    padding: 16px;
+    color: #e74c3c;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    align-items: center;
+    gap: 12px;
+    animation: slideDown 0.4s ease-out;
+}
+
+.error-message.show {
+    display: flex;
+}
+
+@keyframes slideDown {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateY(-10px);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
 }
 
-.qr-scanner-btn svg {
-    width: 28px;
-    height: 28px;
+.whatsapp-bubble {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    left: 30px;
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    z-index: 200;
+    transition: all 0.3s ease;
+    align-items: center;
+    gap: 10px;
+    animation: bounceIn 0.6s ease-out;
 }
 
-.qr-scanner-btn:hover {
+.whatsapp-bubble.show {
+    display: flex;
+}
+
+.whatsapp-bubble svg {
+    width: 24px;
+    height: 24px;
+}
+
+.whatsapp-bubble:hover {
     transform: scale(1.1);
-    background: rgba(74, 124, 168, 0.9);
-    box-shadow: 0 10px 30px rgba(74, 124, 168, 0.4);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
 }
 
-.qr-scanner-btn:active {
+.whatsapp-bubble:active {
     transform: scale(1.05);
 }
 
-/* Back Button */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .back-btn {
     position: fixed;
     bottom: 25px;
@@ -310,7 +361,7 @@ body::before {
     background: rgba(255, 255, 255, 0.95);
     border: none;
     border-radius: 50%;
-    color: #3b7cb8;
+    color: #4a7ca8;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -347,7 +398,6 @@ body::before {
     transform: scale(1.05);
 }
 
-/* Footer */
 .footer {
     position: fixed;
     bottom: 25px;
@@ -387,42 +437,8 @@ body::before {
     margin-top: 3px;
 }
 
-/* Loading Animation */
-.form-input.loading {
-    background: linear-gradient(90deg, 
-        rgba(245, 245, 245, 0.95) 0%, 
-        rgba(230, 230, 230, 0.95) 50%, 
-        rgba(245, 245, 245, 0.95) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-/* Success State */
-.form-input.success {
-    border: 2px solid #2ecc71;
-    background: rgba(46, 204, 113, 0.1);
-}
-
-.form-input.error {
-    border: 2px solid #e74c3c;
-    background: rgba(231, 76, 60, 0.1);
-    animation: shake 0.5s;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    .login-container {
+    .verification-container {
         padding: 25px 20px;
     }
 
@@ -431,15 +447,20 @@ body::before {
         height: 85px;
     }
 
-    .login-title {
-        font-size: 18px;
-        margin-bottom: 30px;
-        max-width: 320px;
+    .verification-title {
+        font-size: 24px;
+        margin-bottom: 12px;
     }
 
-    .form-input {
-        padding: 14px 18px;
+    .verification-subtitle {
         font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .code-input {
+        width: 45px;
+        height: 55px;
+        font-size: 22px;
     }
 
     .submit-btn {
@@ -447,16 +468,11 @@ body::before {
         font-size: 16px;
     }
 
-    .qr-scanner-btn {
-        width: 50px;
-        height: 50px;
-        bottom: 110px;
+    .whatsapp-bubble {
+        bottom: 90px;
         left: 20px;
-    }
-
-    .qr-scanner-btn svg {
-        width: 24px;
-        height: 24px;
+        font-size: 14px;
+        padding: 12px 20px;
     }
 
     .back-btn {
@@ -473,7 +489,7 @@ body::before {
 }
 
 @media (max-width: 480px) {
-    .login-container {
+    .verification-container {
         padding: 20px 18px;
         max-width: 100%;
     }
@@ -483,20 +499,42 @@ body::before {
         height: 75px;
     }
 
-    .login-title {
-        font-size: 16px;
-        margin-bottom: 28px;
-        max-width: 280px;
+    .verification-title {
+        font-size: 22px;
     }
 
-    .form-input {
-        padding: 13px 16px;
+    .verification-subtitle {
         font-size: 13px;
+    }
+
+    .code-inputs {
+        gap: 8px;
+    }
+
+    .code-input {
+        width: 40px;
+        height: 50px;
+        font-size: 20px;
     }
 
     .submit-btn {
         padding: 14px;
         font-size: 16px;
+    }
+
+    .error-message {
+        font-size: 14px;
+        padding: 14px;
+    }
+
+    .whatsapp-bubble {
+        font-size: 13px;
+        padding: 10px 18px;
+    }
+
+    .whatsapp-bubble svg {
+        width: 20px;
+        height: 20px;
     }
 
     .footer {
@@ -517,22 +555,21 @@ body::before {
     }
 }
 
-/* Accessibility */
-.form-input:focus-visible {
+.form-input:focus-visible,
+.code-input:focus-visible {
     outline: 3px solid rgba(74, 124, 168, 0.5);
     outline-offset: 2px;
 }
 
 .submit-btn:focus-visible,
-.qr-scanner-btn:focus-visible,
+.whatsapp-bubble:focus-visible,
 .back-btn:focus-visible {
     outline: 3px solid rgba(74, 124, 168, 0.5);
     outline-offset: 3px;
 }
 
-/* Print Styles */
 @media print {
-    .qr-scanner-btn,
+    .whatsapp-bubble,
     .back-btn,
     .footer {
         display: none;

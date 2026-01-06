@@ -58,9 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Input validation patterns
     const patterns = {
-        phone: /^[0-9]{10,15}$/,
-        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        password: /^.{6,}$/
+        phone: /^(\+?963|0)?9\d{8}$/,
+        email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        password: /^.{6,}$/,
+        amount: /^\d+$/
     };
 
     // Real-time validation
@@ -75,6 +76,15 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordInput.addEventListener('input', function(e) {
         validateInput(this, patterns.password);
     });
+
+    if (agreedAmountInput) {
+        agreedAmountInput.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value) {
+                validateInput(this, patterns.amount);
+            }
+        });
+    }
 
     function validateInput(input, pattern) {
         input.classList.remove('success', 'error');
@@ -112,6 +122,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!patterns.password.test(passwordValue)) {
             passwordInput.classList.add('error');
+            isValid = false;
+        }
+
+        if (agreedAmountInput && agreedAmountValue && !patterns.amount.test(agreedAmountValue)) {
+            agreedAmountInput.classList.add('error');
             isValid = false;
         }
 
@@ -156,10 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
             
             setTimeout(() => {
-                submitBtn.style.background = 'linear-gradient(135deg, #4a7ca8 0%, #5a8dc9 100%)';
-                // Redirect to dashboard or home
-                window.location.href = 'index.html';
-            }, 1500);
+                // Redirect to verification page
+                window.location.href = 'verification.html';
+            }, 1000);
         } else {
             showNotification('حدث خطأ في الإرسال. الرجاء المحاولة مرة أخرى', 'error');
         }
